@@ -59,7 +59,7 @@ export class AppComponent implements OnInit {
   onSelect(data: any): void {}
   onActive(data: any): void {}
   onDeactive(data: any) {}
-  updateGaph(form: NgForm) {
+  updateGraph(form: NgForm) {
     let data = form.value;
     this.selectedXAxis = data.xValue;
     this.selectedYAxis = data.yValue;
@@ -196,7 +196,6 @@ export class AppComponent implements OnInit {
     this.weatherService.getWeatherData().subscribe((data) => {
       this.data = data as any;
       this.data = this.sortData(this.data);
-      console.log(this.data);
       /**
        * using directive to cor0diate graphing and api call
        * if graphing is done with no data then console error results.

@@ -1,16 +1,32 @@
-<ngx-charts-line-chart
-  [view]="view"
-  [scheme]="colorScheme"
-  [legend]="legend"
-  [showXAxisLabel]="showXAxisLabel"
-  [showYAxisLabel]="showYAxisLabel"
-  [xAxis]="xAxis"
-  [yAxis]="yAxis"
-  [xAxisLabel]="xAxisLabel"
-  [yAxisLabel]="yAxisLabel"
-  [timeline]="timeline"
-  [results]="graphingData"
-  [trimXAxisTicks]="true"
-  *ngIf="graphingData"
->
-</ngx-charts-line-chart>
+<div class="component-container">
+  <mat-card class="graph-container">
+    <ngx-charts-line-chart
+      [scheme]="colorScheme"
+      [legend]="legend"
+      [showXAxisLabel]="showXAxisLabel"
+      [showYAxisLabel]="showYAxisLabel"
+      [xAxis]="xAxis"
+      [yAxis]="yAxis"
+      [xAxisLabel]="xAxisLabel"
+      [yAxisLabel]="yAxisLabel"
+      [timeline]="timeline"
+      [results]="graphingData"
+      [trimXAxisTicks]="true"
+      *ngIf="graphingData"
+    >
+    </ngx-charts-line-chart>
+  </mat-card>
+  <mat-card class="form-container">
+    <form #graphForm="ngForm" (ngSubmit)="updateGraph(graphForm)">
+      <mat-form-field appearance="fill">
+        <mat-label>Y Axis</mat-label>
+        <mat-select [ngModel]="selectedXAxis" name="xValue">
+          <mat-option *ngFor="let option of axisOptions" [value]="option">{{
+            option.name
+          }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <button mat-raised-button color="primary" type="submit">Update</button>
+    </form>
+  </mat-card>
+</div>

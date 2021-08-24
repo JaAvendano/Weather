@@ -1,0 +1,17 @@
+.component-container {
+  display: flex;
+  width: 100%;
+  margin: auto;
+  padding-top: 1%;
+}
+.graph-container {
+  height: 800px;
+  margin: 0;
+  padding: 0;
+  flex: 4;
+}
+.form-container {
+  margin: 0;
+  padding: 0;
+  flex: 1;
+}

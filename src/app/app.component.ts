@@ -61,8 +61,9 @@ export class AppComponent implements OnInit {
   onDeactive(data: any) {}
   updateGraph(form: NgForm) {
     let data = form.value;
-    this.selectedXAxis = data.xValue;
+    console.log(data);
     this.selectedYAxis = data.yValue;
+    this.yAxisLabel = this.selectedYAxis.units;
     this.graphingData = [];
     this.graphingData.push(this.setGraphingData());
   }

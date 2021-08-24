@@ -20,7 +20,7 @@
     <form #graphForm="ngForm" (ngSubmit)="updateGraph(graphForm)">
       <mat-form-field appearance="fill">
         <mat-label>Y Axis</mat-label>
-        <mat-select [ngModel]="selectedXAxis" name="xValue">
+        <mat-select [ngModel]="selectedYAxis" name="yValue">
           <mat-option *ngFor="let option of axisOptions" [value]="option">{{
             option.name
           }}</mat-option>

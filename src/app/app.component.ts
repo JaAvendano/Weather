@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { WeatherService } from './services/weather.service';
 
 @Component({
@@ -58,6 +59,13 @@ export class AppComponent implements OnInit {
   onSelect(data: any): void {}
   onActive(data: any): void {}
   onDeactive(data: any) {}
+  updateGaph(form: NgForm) {
+    let data = form.value;
+    this.selectedXAxis = data.xValue;
+    this.selectedYAxis = data.yValue;
+    this.graphingData = [];
+    this.graphingData.push(this.setGraphingData());
+  }
   sortData(rawData) {
     return rawData
       .map((data) => {
@@ -72,12 +80,14 @@ export class AppComponent implements OnInit {
       HourlyStationPressure
       HourlyRelativeHumidity
       */
+        //converting to kPa from inHg
         let pressure: number = (+data.HourlyStationPressure * 3.38639) | NaN;
         let tempC: number = +data.HourlyDryBulbTemperature | NaN;
         //numbers get rounded down to zero
         let rHumidity: number = +data.HourlyRelativeHumidity | NaN;
 
         if (
+          // everything excluded will be undefined
           pressure != NaN &&
           tempC != NaN &&
           rHumidity != NaN &&
@@ -98,7 +108,7 @@ export class AppComponent implements OnInit {
           let gallons = (rhoV / 997) * 264.172;
           let date = new Date(data.DATE);
           let result = {
-            kPaPressure: pressure, //converting to kPa from inHg
+            kPaPressure: pressure,
             cTemperature: tempC,
             rHumidity: rHumidity,
             sHumidity: sHumidity,

@@ -1,17 +1,31 @@
 .component-container {
-  display: flex;
+  position: relative;
+  display: inline-block;
   width: 100%;
-  margin: auto;
-  padding-top: 1%;
+  min-height: fit-content;
+  background-color: grey;
+}
+
+.loading {
+  display: none;
 }
 .graph-container {
-  height: 800px;
-  margin: 0;
-  padding: 0;
-  flex: 4;
+  width: 72%;
+  height: 600px;
+  margin: 1% 0.5%;
+  padding: 1%;
+  float: left;
+}
+.graph {
+  height: 100%;
+  width: 100%;
+  margin: auto;
 }
 .form-container {
-  margin: 0;
-  padding: 0;
-  flex: 1;
+  float: right;
+  width: 22%;
+  height: 600px;
+  margin: 1% 0.5%;
+  padding: 1%;
+  text-align: center;
 }

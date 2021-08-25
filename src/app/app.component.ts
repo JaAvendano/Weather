@@ -10,6 +10,9 @@ import { WeatherService } from './services/weather.service';
 export class AppComponent implements OnInit {
   title = 'Weather';
 
+  // used to toggle loading on and off.
+  isLoading: boolean = true;
+  // variables for graph
   data: any[] = [];
   graphingData: object[] = null;
   view: [number, number] = [700, 300];
@@ -49,6 +52,7 @@ export class AppComponent implements OnInit {
     { name: 'Water Density', units: 'Density (kg/meter^3)' },
     { name: 'Air Density', units: 'Density (kg/meter^3)' },
     { name: 'Gallons', units: 'Volume (gallons)' },
+    { name: 'Temperature F', units: 'Temperature (°F)' },
   ];
   selectedXAxis = this.axisOptions[3];
   selectedYAxis = this.axisOptions[2];
@@ -61,7 +65,6 @@ export class AppComponent implements OnInit {
   onDeactive(data: any) {}
   updateGraph(form: NgForm) {
     let data = form.value;
-    console.log(data);
     this.selectedYAxis = data.yValue;
     this.yAxisLabel = this.selectedYAxis.units;
     this.graphingData = [];
@@ -95,6 +98,7 @@ export class AppComponent implements OnInit {
           pressure != 0
         ) {
           let kTemp = tempC + 273.15;
+          let tempF = tempC * (9 / 5) + 32;
           let pg = this.calcPg(tempC);
           //dividing by 100 since humidity should be in decimal form
           let pv = (rHumidity * pg) / 100;
@@ -111,6 +115,7 @@ export class AppComponent implements OnInit {
           let result = {
             kPaPressure: pressure,
             cTemperature: tempC,
+            fTemperature: tempF,
             rHumidity: rHumidity,
             sHumidity: sHumidity,
             date: date,
@@ -184,6 +189,8 @@ export class AppComponent implements OnInit {
         return 'rhoA';
       case this.axisOptions[14].name:
         return 'gallons';
+      case this.axisOptions[15].name:
+        return 'fTemperature';
     }
   }
   /**
@@ -203,6 +210,8 @@ export class AppComponent implements OnInit {
        */
       this.graphingData = [];
       this.graphingData.push(this.setGraphingData());
+      console.log(this.graphingData);
+      this.isLoading = false;
     });
   }
 }

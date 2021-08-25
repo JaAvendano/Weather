@@ -16,9 +16,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // graphing utility
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { WeatherService } from './services/weather.service';
+import { LoadingScreenComponent } from './components/loading-screen/loading-screen.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, LoadingScreenComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

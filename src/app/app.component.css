@@ -1,31 +1,77 @@
 .component-container {
   position: relative;
-  display: inline-block;
   width: 100%;
   min-height: fit-content;
   background-color: grey;
+  padding: 0;
+  margin: 0;
 }
 
 .loading {
   display: none;
 }
-.graph-container {
-  width: 72%;
-  height: 600px;
-  margin: 1% 0.5%;
-  padding: 1%;
-  float: left;
-}
+
 .graph {
   height: 100%;
   width: 100%;
   margin: auto;
 }
-.form-container {
-  float: right;
-  width: 22%;
-  height: 600px;
-  margin: 1% 0.5%;
+
+form {
   padding: 1%;
-  text-align: center;
+  margin: 1%;
+}
+.mat-form-field {
+  padding: 1%;
+}
+button {
+  padding: 0.5%;
+  width: 25%;
+  top: 0;
+}
+@media (min-width: 1200px) {
+  .component-container {
+    display: inline-block;
+  }
+  .graph-container {
+    width: 72%;
+    height: 600px;
+    margin: 1% 0.5%;
+    padding: 1%;
+    float: left;
+  }
+  .form-container {
+    float: right;
+    width: 22%;
+    height: 600px;
+    margin: 1% 0.5%;
+    padding: 1%;
+    text-align: center;
+  }
+}
+
+@media (max-width: 1200px) {
+  .component-container {
+    display: block;
+  }
+  .graph-container {
+    width: 97%;
+    margin: auto;
+    padding: 1%;
+    height: 400px;
+  }
+  .form-container {
+    text-align: center;
+    margin: 1% 0.5%;
+    padding: 1%;
+  }
+}
+@media (max-width: 992px) {
+}
+@media (max-width: 768px) {
+}
+@media (max-width: 576px) {
+  .graph-container {
+    height: 250px;
+  }
 }
